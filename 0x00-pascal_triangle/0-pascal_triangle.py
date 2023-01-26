@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+"""This module contains a function that represents Pascal's triangle"""
+
+
 def pascal_triangle(n):
-    '''
+
+    """
     This function represents Pascals triangle
 
     Args:
         n (int): The number of rows of the tirangle
     Returns:
         List of lists of integers representing Pascal's triangle
-    '''
+    """
 
     if n <= 0:
         return []
