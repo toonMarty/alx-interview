@@ -1,1 +1,1 @@
-This directory contains a lockboxes solution for the lockboxes problem
+This directory contains a solution to the lockboxes problem
