@@ -16,12 +16,23 @@ def validUTF8(data):
             else
         False if data set is not a valid utf-8 encoding
     """
-    res = []
-    for element in data:
-        to_binary = bin(element).lstrip('0b')
-        res.append(to_binary)
+    num_bytes = 0
+    for num in data:
+        to_binary = format(num, '#010b')[-8:]
+        if num_bytes == 0:
+            for element in to_binary:
+                if element == '0':
+                    break
+                num_bytes += 1
+            if num_bytes == 0:
+                continue
 
-    for bin_element in res:
-        if len(bin_element) > 7:
-            return False
-        return True
+            if num_bytes == 1 or num_bytes > 4:
+                return False
+        else:
+            if not (to_binary[0] == '1' and to_binary[1] == '0'):
+                return False
+
+        num_bytes -= 1
+
+    return num_bytes == 0
