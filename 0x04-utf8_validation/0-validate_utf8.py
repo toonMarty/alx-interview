@@ -16,6 +16,12 @@ def validUTF8(data):
             else
         False if data set is not a valid utf-8 encoding
     """
-    if max(data) > 127:
-        return False
-    return True
+    res = []
+    for element in data:
+        to_binary = bin(element).lstrip('0b')
+        res.append(to_binary)
+
+    for bin_element in res:
+        if len(bin_element) > 7:
+            return False
+        return True
