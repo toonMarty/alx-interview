@@ -15,19 +15,15 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    if min(coins) > total:
-        return -1
-    lst = [-1 for i in range(0, total + 1)]
 
-    for i in coins:
-        if i > len(lst) - 1:
-            continue
-        lst[i] = 1
-        for j in range(i + 1, total + 1):
-            if lst[j - i] == -1:
-                continue
-            elif lst[j] == -1:
-                lst[j] = lst[j - i] + 1
-            else:
-                lst[j] = min(lst[j], lst[j - i] + 1)
-    return lst[total]
+    else:
+        ordered_coin = sorted(coins)
+        ordered_coin.reverse()
+        counter = 0
+        for i in ordered_coin:
+            while total >= i:
+                counter += 1
+                total -= i
+        if total == 0:
+            return counter
+        return -1
